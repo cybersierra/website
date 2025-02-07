@@ -1,0 +1,262 @@
+body{
+  /* background stuff */
+  background: #fff2f5 url('clouds2.png') repeat; /* this is the background color */
+  background-size: auto; /* this is to make the background image cover the whole screen */
+  background-position: center; /* this is to make the background image centered */
+  background-attachment: fixed; /* this is to make the background image fixed */
+  
+  /* font stuff */
+  color: #111;
+  font-family: 'Fira Code', monospace;
+  text-align: left;
+  text-transform: bold;
+  margin: 0;
+}
+
+.header{
+  /* this is to keep the button in the center */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-title{
+  /* font stuff */
+  font-family: 'Playfair Display', serif; 
+  font-size: 3rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #111;
+
+  /* padding and border */
+  background: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  /* content box */
+  background-color: rgba(255, 252, 252, 0.85); /* light background w transparency */
+  padding: 15px 30px; /* padding inside the box */
+  border: 2px solid #fff2f5; /* soft pink border around the box */
+  border-radius: 15px; /* rounded corners */
+  display: inline-block; /* makes it fit content size */
+  margin: 20px auto; /* centers the box */
+  text-align: center; /* centers the text */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
+}
+
+.site-title:hover{
+  color: #ffc0cb;
+  transform: translateY(-5px);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bar{
+  display: flex;
+  justify-content: center; /* centers the items */
+  background-color: rgba(255, 252, 252, 0.85); /* light background w transparency */
+  padding: 10px 20px; /* padding inside the box */
+  border-radius: 15px; /* rounded corners */
+  margin-top: 10px; /* adds space between the title and the nav bar */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
+
+  position: relative;
+  top: 0;
+  z-index: 1000; /* makes sure it's on top of everything */
+}
+
+.nav-bar ul{
+  list-style: none; /* removes the bullet points */
+  display: flex; /* makes the items horizontal */
+  gap: 20px; /* adds space between the items */
+  padding: 0;
+  margin: 0;
+}
+
+
+.nav-bar ul li a{
+  text-decoration: none;
+  color: #111;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* this is the hover effect for the nav bar */
+.nav-bar li{
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bar li:hover{
+  transform: translateY(-5px);
+}
+
+.nav-bar li a{
+  text-decoration: none;
+  color: #111;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bar li:hover a{
+  color: #ffc0cb;
+}
+
+.index .content-wrapper{
+  display: flex;
+  flex-direction: row; /* stacks the bio and main content */
+  align-items: flex-start; /* aligns the items to the top */
+  justify-content: space-between; /* ensures equal spacing */
+  gap: 50px; /* adds space between middle column and right column */
+  max-width: 1800px; /* keeps from getting too wide */
+  margin: 20px auto; /* centers the box */
+  padding: 20px;
+}
+
+/* this is the left and right column separation*/
+.left-column, .right-column{
+  flex: 1; /* makes the columns take up equal space */
+  width: 25%;
+  max-width: 300px;
+  display: flex;
+  flex-direction:column; /* stacks the items */
+  gap: 20px; /* adds space between the items */
+}
+
+/* styling for bio box */
+.bio{
+  width: 250px;
+  text-align: center;
+  position: relative;
+
+  /* make it pretty */
+  background-color: rgba(255, 255, 255, 0.85); /* light background w transparency */
+  border: 2px solid #fff2f5; /* soft pink border around the box */
+  border-radius: 15px; /* rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
+  padding: 15px;
+}
+
+.bio-text{
+  font-size: 14px;
+  color:#111;
+}
+
+/* styling for recent posts box */
+.recent-posts{
+  width: 250px;
+  text-align: center;
+  position: relative;
+
+  /* make it pretty */
+  background-color: rgba(255, 255, 255, 0.85); /* light background w transparency */
+  border: 2px solid #fff2f5; /* soft pink border around the box */
+  border-radius: 15px; /* rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
+  padding: 15px;
+}
+
+/*recent posts post title styling */
+.recent-posts a{
+  font-size: 14px;
+  text-decoration: none;
+  color:#111;
+}
+
+/* recent posts hover effect */
+.recent-posts a:hover{
+  color: #ffc0cb;
+  transition: all 0.3s ease-in-out;
+}
+
+/* this is the middle column styling*/
+.middle-column{
+  flex: 2; /* makes the column take up more space */
+  width: 50%; /* just a little more to make it more dominant on the screen */
+  max-width: 50%;
+  /* content box */
+  background-color: rgba(255, 254, 254, 0.9); /* light background w transparency */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
+}
+
+/* about */
+.about-container{
+  /* making the actual box nice and pretty */
+  max-width: 800px; /* keeps from getting too wide */
+  margin: 50px auto; /* centers the box */
+  text-align: left; /* left aligns the text */
+  background-color: rgba(255, 255, 255, 0.9); /* light background w transparency */
+  padding: 20px; /* padding inside the box */
+  border-radius: 15px; /* rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
+}
+
+/* blog container formatting */
+.blog-container{
+  /* making the actual box nice and pretty */
+  max-width: 800px; /* keeps from getting too wide */
+  margin: 50px auto; /* centers the box */
+  text-align: left; /* left aligns the text */
+  background-color: rgba(255, 255, 255, 0.9); /* light background w transparency */
+  padding: 20px; /* padding inside the box */
+  border-radius: 15px; /* rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
+}
+
+.posts-list{
+  list-style: none; /* removes the bullet points */
+  padding-left: 0;
+}
+
+.posts-list li{
+  position: relative;
+  padding-left: 20px; /* adds space for the icon */
+  min-height: 20px; /* makes sure the icon is centered */
+}
+
+.posts-list li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 9px;
+  background-image: url('/heart-blinky.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/*blog-container text styling*/
+.blog-container a{
+  text-decoration: none;
+  color: #111;
+}
+
+.blog-container a:hover{
+  color: #ffc0cb;
+  transition: all 0.3s ease-in-out;
+}
+
+.about-container p{
+  text-indent: 30px; /* indents the first line of the paragraph */
+  text-align: justify; /* aligns the text to fill the box */
+}
+
+@media (max-width: 900px){
+  .page-container{
+    flex-direction: column; /* stacks the bio and main content */
+    align-items: center; /* centers the items */
+  }
+  
+  .left-column, .middle-column, .right-column{
+    width: 90%; /* makes the bio box take up 80% of the screen */
+    max-width: 400px; /* keeps from getting too wide */
+  }
+
+}
