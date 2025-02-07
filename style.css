@@ -1,3 +1,7 @@
+/*
+====================================================== INDEX.HTML =========================================================
+*/
+
 body{
   /* background stuff */
   background: #fff2f5 url('clouds2.png') repeat; /* this is the background color */
@@ -184,6 +188,10 @@ body{
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
 }
 
+/*
+====================================================== ABOUT.HTML =========================================================
+*/
+
 /* about */
 .about-container{
   /* making the actual box nice and pretty */
@@ -195,6 +203,14 @@ body{
   border-radius: 15px; /* rounded corners */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
 }
+
+.about-container h1{
+  text-align: center;
+}
+
+/*
+======================================================= BLOG.HTML =========================================================
+*/
 
 /* blog container formatting */
 .blog-container{
@@ -208,13 +224,26 @@ body{
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
 }
 
+.blog-post{
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* light background w transparency */
+  border-radius: 10px; /* rounded corners */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* shadow */
+  margin-bottom: 20px; /* adds space between the posts */
+}
+
 .posts-list{
   list-style: none; /* removes the bullet points */
   padding-left: 0;
 }
 
+.blog-container h1{
+  text-align: center;
+}
+
 .posts-list li{
   position: relative;
+  line-height: 2.0; /* More space inside each item */
   padding-left: 20px; /* adds space for the icon */
   min-height: 20px; /* makes sure the icon is centered */
 }
