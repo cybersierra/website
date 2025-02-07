@@ -15,6 +15,14 @@ body{
   text-align: left;
   text-transform: bold;
   margin: 0;
+
+    /* cursor is from https://www.cursors-4u.com/cursor/2011/12/29/angel-wing-heart.html
+  /* cursor */
+  cursor: url('assets/heart-cursor.png'), auto;
+}
+
+body, a{
+  cursor: url('assets/heart-cursor.png'), auto;
 }
 
 .header{
@@ -25,6 +33,17 @@ body{
   text-align: center;
   justify-content: center;
   align-items: center;
+  gap: 10px; /* adds space between the items */
+}
+
+/* This sprite is from https://picrew.me/en/image_maker/2003689 */
+.sprite{
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: -90px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .site-title{
@@ -38,7 +57,6 @@ body{
   /* padding and border */
   background: none;
   padding: 10px 20px;
-  cursor: pointer;
   transition: all 0.3s ease-in-out;
 
   /* content box */
@@ -142,6 +160,8 @@ body{
   border-radius: 15px; /* rounded corners */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
   padding: 15px;
+
+  padding-top: 50px; /* adds space for the icon */
 }
 
 .bio-text{
