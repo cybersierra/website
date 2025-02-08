@@ -352,6 +352,10 @@ body, a{
   text-align: justify; /* aligns the text to fill the box */
 }
 
+/*
+======================================================= MOBILE =========================================================
+*/
+
 @media (max-width: 600px){
   .page-container{
     flex-direction: column; /* stacks the bio and main content */
@@ -359,6 +363,7 @@ body, a{
     padding: 10px;
   }
 
+  /*                                                   SITE TITLE                                                      */
   .site-title{
     font-size: 2.5em; /* makes the title smaller */
     padding: 5px 10px; /* padding inside the box */
@@ -372,7 +377,7 @@ body, a{
   }
 
   .left-column{
-    padding-top: 30px;
+    padding-top: 100px; /* for the icon */
   }
 
   .middle-column{
@@ -388,11 +393,23 @@ body, a{
     margin-right: 5px;
   }
 
+  .bio{
+    align-items: center;
+    width: 90%; /* makes the bio box take up 80% of the screen */
+    max-width: 400px; /* keeps from getting too wide */
+  }
+
+  .updates{
+    align-items: center;
+    width: 90%;
+    max-width: 400px; /* keeps from getting too wide */
+  }
+
   .header{
     justify-content: space-between;
-    margin-bottom: 80px;
   }
   
+  /*                                                   NAV BAR                                                         */
 
   .nav-bar{
     /* size on screen */
@@ -426,19 +443,30 @@ body, a{
   .nav-bar ul{
     flex-direction: column;
     align-items:center;
-    gap: 10px;
   }
 
-  .bio{
-    align-items: center;
-    width: 90%; /* makes the bio box take up 80% of the screen */
-    max-width: 400px; /* keeps from getting too wide */
+    /*                                                   ABOUT PAGE                                                    */
+
+  .about-container{
+    width: 80%;
+    max-width: 400px;
   }
 
-  .updates{
-    align-items: center;
-    width: 90%;
-    max-width: 400px; /* keeps from getting too wide */
+  .about-container p{
+    text-align: left; /* aligns the text to fill the box */
   }
 
+    /*                                                 BLOG PAGE                                                       */
+
+  .blog-container{
+    width: 80%;
+    max-width: 400px;
+  }
+
+    /*                                                 BLOG POSTS                                                      */
+
+  .blog-post{
+    width: 80%;
+    max-width: 400px;
+  }
 }
