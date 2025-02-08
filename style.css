@@ -352,14 +352,92 @@ body, a{
   text-align: justify; /* aligns the text to fill the box */
 }
 
-@media (max-width: 900px){
+@media (max-width: 600px){
   .page-container{
     flex-direction: column; /* stacks the bio and main content */
     align-items: center; /* centers the items */
+    padding: 10px;
+  }
+
+  .site-title{
+    font-size: 2.5em; /* makes the title smaller */
+    padding: 5px 10px; /* padding inside the box */
   }
   
-  .left-column, .middle-column, .right-column{
+  .index .content-wrapper{
+    flex-direction: column; /* stacks the bio and main content */
+    align-items: center; /* centers the items */
+    padding: 10px;
+    justify-content: space-between; /* ensures equal spacing */
+  }
+
+  .left-column{
+    padding-top: 30px;
+  }
+
+  .middle-column{
+    width: 80%; /* makes the bio box take up 80% of the screen */
+    max-width: 400px; /* keeps from getting too wide */
+    margin-bottom: 15px; /* adds space between the boxes */
+  }
+
+  .left-column, .right-column{
+    width: 90%; /* makes the bio box take up 100% of the screen */
+    max-width: 400px; /* keeps from getting too wide */
+    align-items: center;
+    margin-right: 5px;
+  }
+
+  .header{
+    justify-content: space-between;
+    margin-bottom: 80px;
+  }
+  
+
+  .nav-bar{
+    /* size on screen */
+    width:80%;
+    max-width: 400px;
+    
+    /*
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    */
+
+    font-size: 0.9em;
+    
+    
+  }
+
+  .nav-bar a{
+    text-align: center; 
+    font-size: 1.2em;
+
+    /*
+    padding: 10px;
+    width: 100%;
+    white-space: nowrap;
+    */
+  }
+  
+  .nav-bar ul{
+    flex-direction: column;
+    align-items:center;
+    gap: 10px;
+  }
+
+  .bio{
+    align-items: center;
     width: 90%; /* makes the bio box take up 80% of the screen */
+    max-width: 400px; /* keeps from getting too wide */
+  }
+
+  .updates{
+    align-items: center;
+    width: 90%;
     max-width: 400px; /* keeps from getting too wide */
   }
 
