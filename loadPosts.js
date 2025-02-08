@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(posts => {
             let container = document.getElementById("blog-snippets");
+            container.innerHTML = ""; // Clear existing content
 
             posts.forEach(post => {
                 let postHTML = `
