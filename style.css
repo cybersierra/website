@@ -4,7 +4,7 @@
 
 body{
   /* background stuff */
-  background: #fff2f5 url('clouds2.png') repeat; /* this is the background color */
+  background: #fff2f5 url('assets/clouds2.png') repeat; /* this is the background color */
   background-size: auto; /* this is to make the background image cover the whole screen */
   background-position: center; /* this is to make the background image centered */
   background-attachment: fixed; /* this is to make the background image fixed */
