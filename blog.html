@@ -4,35 +4,164 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>cybersierra</title>
-  <!-- linking to the css file -->
   <link href="/style.css" rel="stylesheet" type="text/css" media="all">
-  <!-- linking to body font -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-  <!-- linking to the button/header font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+      justify-content: center;
+    }
+
+    .tag-button {
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 2px solid #fff2f5;
+      border-radius: 15px;
+      padding: 5px 15px;
+      cursor: url('assets/heart-cursor.png'), pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .tag-button:hover {
+      background-color: #ffc0cb;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .tag-button.active {
+      background-color: #ffc0cb;
+      color: white;
+    }
+
+    .post-item {
+      margin: 15px 0;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: url('assets/heart-cursor.png'), pointer;
+      border: 2px solid transparent;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .post-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .post-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .post-tags {
+      margin-top: 5px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- button/header -->
-    <header class = "header">
-        <a href="/index.html" class = "site-title">cybersierra</a>
+  <header class="header">
+    <a href="/index.html" class="site-title">cybersierra</a>
+    <nav class="nav-bar">
+      <ul>
+        <li><a href="/index.html">home</a></li>
+        <li><a href="/about.html">about</a></li>
+        <li><a href="/blog.html">blog</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <!-- navigation bar -->
-        <nav class="nav-bar">
-          <ul>
-            <li><a href="/index.html">home</a></li>
-            <li><a href="/about.html">about</a></li>
-            <li><a href="/blog.html">blog</a></li>
-          </ul>
-        </nav>
-      </header>
+  <main class="blog-container">
+    <h1>blog posts</h1>
+    <div class="tag-container" id="tagContainer"></div>
+    <div id="postsContainer"></div>
+  </main>
 
-    <main class = "blog-container">
-        <h1>blog posts</h1>
-        <ul class="list">
-            <li><a href="\posts\new-pc.html">new pc</a></li>
-            <li><a href="posts/post2.html">post 2</a></li>
-        </ul>
-    </main>
+  <script>
+    // Blog posts data structure
+    const posts = [
+      {
+        title: "New PC",
+        url: "/posts/new-pc.html",
+        tags: ["tech", "computerscience"],
+        date: "2024-02-10"
+      },
+      {
+        title: "Post 2",
+        url: "/posts/post2.html",
+        tags: ["philosophy"],
+        date: "2024-02-08"
+      }
+      // Add more posts here
+    ];
+
+    // Get unique tags from all posts
+    const getAllTags = () => {
+      const tags = new Set();
+      posts.forEach(post => post.tags.forEach(tag => tags.add(tag)));
+      return Array.from(tags);
+    };
+
+    // Initialize tag buttons
+    const initializeTags = () => {
+      const tagContainer = document.getElementById('tagContainer');
+      const allButton = document.createElement('button');
+      allButton.textContent = 'all';
+      allButton.className = 'tag-button active';
+      allButton.onclick = () => filterPosts('all');
+      tagContainer.appendChild(allButton);
+
+      getAllTags().forEach(tag => {
+        const button = document.createElement('button');
+        button.textContent = tag;
+        button.className = 'tag-button';
+        button.onclick = () => filterPosts(tag);
+        tagContainer.appendChild(button);
+      });
+    };
+
+    // Filter posts by tag
+    const filterPosts = (selectedTag) => {
+      // Update active button
+      document.querySelectorAll('.tag-button').forEach(button => {
+        button.classList.remove('active');
+        if (button.textContent === selectedTag) button.classList.add('active');
+      });
+
+      // Filter and display posts
+      const postsContainer = document.getElementById('postsContainer');
+      postsContainer.innerHTML = '';
+
+      const filteredPosts = selectedTag === 'all' 
+        ? posts 
+        : posts.filter(post => post.tags.includes(selectedTag));
+
+      filteredPosts.forEach(post => {
+        const postElement = document.createElement('a');
+        postElement.href = post.url;
+        postElement.className = 'post-item';
+        postElement.innerHTML = `
+          <div class="post-title">${post.title}</div>
+          <div class="post-tags">Tags: ${post.tags.join(', ')}</div>
+        `;
+        postsContainer.appendChild(postElement);
+      });
+    };
+
+    // Initialize when page loads
+    window.onload = () => {
+      initializeTags();
+      filterPosts('all');
+    };
+  </script>
 </body>
 </html>
