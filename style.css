@@ -1,29 +1,89 @@
 /*
-====================================================== INDEX.HTML =========================================================
+========================================
+CSS VARIABLES
+========================================
+*/
+:root{
+  /* colors */
+  --bg-color: #fff2f5;
+  --text-color: #111;
+  --primary-accent: ##ffc0cb;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --border-color: #fff2f5;
+  --link-hover: #ffc0cb;
+  --read-more-color: #899499;
+
+  /* typography */
+  --body-font: 'Fira Code', monospace;
+  --heading-font: 'Playfair Display', serif;
+
+  /* spacing */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-xxl: 50px;
+
+  /* effects */
+  --border-radius-sm: 10px;
+  --border-radius-md: 15px;
+  --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  --box-shadow-sm: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  --transition-default: all 0.3s ease-in-out
+}
+
+/*
+========================================
+GLOBAL STYLES
+========================================
 */
 
 body{
   /* background stuff */
-  background: #fff2f5 url('assets/clouds2.png') repeat; /* this is the background color */
+  background: var(--bg-color) url('assets/clouds2.png') repeat; /* this is the background color */
   background-size: auto; /* this is to make the background image cover the whole screen */
   background-position: center; /* this is to make the background image centered */
   background-attachment: fixed; /* this is to make the background image fixed */
   
   /* font stuff */
-  color: #111;
-  font-family: 'Fira Code', monospace;
+  color: var(--text-color);
+  font-family: var(--body-font);
   text-align: left;
   text-transform: bold;
   margin: 0;
 
-    /* cursor is from https://www.cursors-4u.com/cursor/2011/12/29/angel-wing-heart.html
+  /* cursor is from https://www.cursors-4u.com/cursor/2011/12/29/angel-wing-heart.html
   /* cursor */
   cursor: url('assets/heart-cursor.png'), auto;
 }
 
-body, a{
+/* this is for links */
+a{
   cursor: url('assets/heart-cursor.png'), auto;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: var(--transition-default);
 }
+
+a:hover{
+  color: var(--primary-accent);
+}
+
+/* styling for the containers */
+.card{
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-lg);
+}
+
+/*
+========================================
+HEADER & NAVIGATION
+========================================
+*/
 
 .header{
   /* this is to keep the button in the center */
@@ -32,8 +92,111 @@ body, a{
   align-items: center;
   text-align: center;
   justify-content: center;
-  align-items: center;
-  gap: 10px; /* adds space between the items */
+  gap: var(--spacing-sm); /* adds space between the items */
+}
+
+.site-title{
+  /* font stuff */
+  font-family: var(--heading-font);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-color);
+
+  /* padding and border */
+  display: inline-block;
+  margin: var(--spacing-lg) auto;
+  text-align: center;
+
+  /* styling */
+  background-color: var(--card-bg);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition-default);
+}
+
+.site-title:hover{
+  color: var(--primary-accent);
+  transform: translateY(-5px);
+}
+
+.nav-bar{
+  display: flex;
+  justify-content: center; /* centers the items */
+  background-color: var(--card-bg);
+  padding: var(--spacing-sm) var(--spacing-lg); /* padding inside the box */
+  border-radius: var(--border-radius-md); /* rounded corners */
+  margin-top: var(--spacing-sm); /* adds space between the title and the nav bar */
+  box-shadow: var(--box-shadow); /* shadow */
+  position: relative;
+  z-index: 1000; /* makes sure it's on top of everything */
+}
+
+.nav-bar ul{
+  list-style: none; /* removes the bullet points */
+  display: flex; /* makes the items horizontal */
+  gap: var(--spacing-lg); /* adds space between the items */
+  padding: 0;
+  margin: 0;
+}
+
+/* this is the hover effect for the nav bar */
+.nav-bar li{
+  transition: var(--transition-default);
+}
+
+.nav-bar li:hover{
+  transform: var(--transition-default);
+  transform: translateY(-5px);
+  color: #ffc0cb;
+}
+
+.nav-bar li a{
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
+}
+
+/*
+========================================
+INDEX PAGE LAYOUT
+========================================
+*/
+
+.index .content-wrapper{
+  display: flex;
+  flex-direction: row; /* stacks the bio and main content */
+  align-items: flex-start; /* aligns the items to the top */
+  justify-content: space-between; /* ensures equal spacing */
+  gap: var(--spacing-xxl); /* adds space between middle column and right column */
+  max-width: 1800px; /* keeps from getting too wide */
+  margin: var(--spacing-lg) auto; /* centers the box */
+  padding: var(--spacing-lg);
+}
+
+/* this is the left and right column separation*/
+.left-column, .right-column{
+  flex: 1; /* makes the columns take up equal space */
+  width: 25%;
+  max-width: 300px;
+  display: flex;
+  flex-direction:column; /* stacks the items */
+  gap: var(--spacing-lg); /* adds space between the items */
+}
+
+/* bio box */
+.bio{
+  width: 250px;
+  text-align: center;
+  position: relative;
+  padding-top: 50px; /* adds space for the sprite */
+
+  /* make it pretty w container */
+  background-color: var(--card-bg); /* light background w transparency */
+  border: 2px solid var(--border-color); /* soft pink border around the box */
+  border-radius: var(--border-radius-md); /* rounded corners */
+  box-shadow: var(--box-shadow); /* shadow */
+  padding: var(--spacing-md);
 }
 
 /* This sprite is from https://picrew.me/en/image_maker/2003689 */
@@ -46,129 +209,6 @@ body, a{
   transform: translateX(-50%);
 }
 
-.site-title{
-  /* font stuff */
-  font-family: 'Playfair Display', serif; 
-  font-size: 3rem;
-  font-weight: 700;
-  text-decoration: none;
-  color: #111;
-
-  /* padding and border */
-  background: none;
-  padding: 10px 20px;
-  transition: all 0.3s ease-in-out;
-
-  /* content box */
-  background-color: rgba(255, 252, 252, 0.85); /* light background w transparency */
-  padding: 15px 30px; /* padding inside the box */
-  border: 2px solid #fff2f5; /* soft pink border around the box */
-  border-radius: 15px; /* rounded corners */
-  display: inline-block; /* makes it fit content size */
-  margin: 20px auto; /* centers the box */
-  text-align: center; /* centers the text */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
-}
-
-.site-title:hover{
-  color: #ffc0cb;
-  transform: translateY(-5px);
-  transition: all 0.3s ease-in-out;
-}
-
-.nav-bar{
-  display: flex;
-  justify-content: center; /* centers the items */
-  background-color: rgba(255, 252, 252, 0.85); /* light background w transparency */
-  padding: 10px 20px; /* padding inside the box */
-  border-radius: 15px; /* rounded corners */
-  margin-top: 10px; /* adds space between the title and the nav bar */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
-
-  position: relative;
-  top: 0;
-  z-index: 1000; /* makes sure it's on top of everything */
-}
-
-.nav-bar ul{
-  list-style: none; /* removes the bullet points */
-  display: flex; /* makes the items horizontal */
-  gap: 20px; /* adds space between the items */
-  padding: 0;
-  margin: 0;
-}
-
-
-.nav-bar ul li a{
-  text-decoration: none;
-  color: #111;
-  padding: 10px 20px;
-  border-radius: 10px;
-  transition: all 0.3s ease-in-out;
-}
-
-
-/* this is the hover effect for the nav bar */
-.nav-bar li{
-  transition: all 0.3s ease-in-out;
-}
-
-.nav-bar li:hover{
-  transform: translateY(-5px);
-}
-
-.nav-bar li a{
-  text-decoration: none;
-  color: #111;
-  transition: all 0.3s ease-in-out;
-}
-
-.nav-bar li:hover a{
-  color: #ffc0cb;
-}
-
-.index .content-wrapper{
-  display: flex;
-  flex-direction: row; /* stacks the bio and main content */
-  align-items: flex-start; /* aligns the items to the top */
-  justify-content: space-between; /* ensures equal spacing */
-  gap: 50px; /* adds space between middle column and right column */
-  max-width: 1800px; /* keeps from getting too wide */
-  margin: 20px auto; /* centers the box */
-  padding: 20px;
-}
-
-/* this is the left and right column separation*/
-.left-column, .right-column{
-  flex: 1; /* makes the columns take up equal space */
-  width: 25%;
-  max-width: 300px;
-  display: flex;
-  flex-direction:column; /* stacks the items */
-  gap: 20px; /* adds space between the items */
-}
-
-/* styling for bio box */
-.bio{
-  width: 250px;
-  text-align: center;
-  position: relative;
-
-  /* make it pretty */
-  background-color: rgba(255, 255, 255, 0.85); /* light background w transparency */
-  border: 2px solid #fff2f5; /* soft pink border around the box */
-  border-radius: 15px; /* rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
-  padding: 15px;
-
-  padding-top: 50px; /* adds space for the icon */
-}
-
-.bio-text{
-  font-size: 14px;
-  color:#111;
-}
-
 .bio h1{
   text-align: center;
 }
@@ -179,15 +219,15 @@ body, a{
   text-align: left;
   position: relative;
   line-height: 2.0; /* More space inside each item */
-  padding-left: 10px; /* adds space for the icon */
-  min-height: 10px; /* makes sure the icon is centered */
+  padding-left: var(--spacing-sm); /* adds space for the icon */
+  min-height: var(--spacing-sm); /* makes sure the icon is centered */
 
   /* make it pretty */
-  background-color: rgba(255, 255, 255, 0.85); /* light background w transparency */
-  border: 2px solid #fff2f5; /* soft pink border around the box */
-  border-radius: 15px; /* rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
-  padding: 15px;
+  background-color: var(--card-bg); /* light background w transparency */
+  border: 2px solid var(--border-color); /* soft pink border around the box */
+  border-radius: var(--border-radius-md); /* rounded corners */
+  box-shadow: var(--box-shadow); /* shadow */
+  padding: var(--spacing-md);
 }
 
 .updates h1{
@@ -195,37 +235,29 @@ body, a{
 }
 
 /*
-.recent-blog-posts {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-  */
+========================================
+BLOG POSTS & SNIPPETS
+========================================
+*/
 
 .blog-snippet {
-  padding: 15px;
+  padding: var(--spacing-md);
   background: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--box-shadow-sm);
+  margin-bottom: var(--spacing-lg);
 }
 
 .blog-snippet h3 {
-  margin-bottom: 5px;
+  margin-bottom: var(--spacing-xs);
 }
 
 .blog-snippet h3 a {
-  text-decoration: none; /* Removes underline */
-  color: #111; /* Makes it match your site’s text color */
   font-weight: bold;
-  transition: color 0.3s ease-in-out;
 }
 
 .blog-snippet h3 a:hover {
-  color: #ffc0cb; /* Pink hover effect */
+  color: var(--link-hover); /* Pink hover effect */
 }
 
 .blog-snippet p {
@@ -234,16 +266,13 @@ body, a{
 }
 
 .read-more {
-  color: #899499; /* Gray Read More link */
+  color: var(--read-more-color); /* Gray Read More link */
   font-weight: bold;
-  text-decoration: none;
 }
 
 .read-more:hover {
-  color: #ffc0cb;
-  transition: all 0.3s ease-in-out;
+  color: var(--primary-accent);
 }
-
 
 /* this is the middle column styling*/
 .middle-column{
@@ -251,69 +280,16 @@ body, a{
   width: 50%; /* just a little more to make it more dominant on the screen */
   max-width: 50%;
   /* content box */
-  background-color: rgba(255, 254, 254, 0.85); /* light background w transparency */
-  border: 2px solid #fff2f5; /* soft pink border around the box */
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
-}
-
-/*
-====================================================== ABOUT.HTML =========================================================
-*/
-
-/* about */
-.about-container{
-  /* making the actual box nice and pretty */
-  max-width: 800px; /* keeps from getting too wide */
-  margin: 50px auto; /* centers the box */
-  text-align: left; /* left aligns the text */
-  background-color: rgba(255, 255, 255, 0.9); /* light background w transparency */
-  padding: 20px; /* padding inside the box */
-  border-radius: 15px; /* rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
-}
-
-.about-container h1{
-  text-align: center;
-}
-
-/*
-======================================================= BLOG.HTML =========================================================
-*/
-
-/* blog container formatting */
-.blog-container{
-  /* making the actual box nice and pretty */
-  max-width: 800px; /* keeps from getting too wide */
-  margin: 50px auto; /* centers the box */
-  text-align: left; /* left aligns the text */
-  background-color: rgba(255, 255, 255, 0.9); /* light background w transparency */
-  padding: 20px; /* padding inside the box */
-  border-radius: 15px; /* rounded corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
-}
-
-.blog-post{
-  /* adding from blog-container */
-  max-width: 800px; /* keeps from getting too wide */
-  margin: 50px auto; /* centers the box */
-  text-align: left; /* left aligns the text */
-
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.95); /* light background w transparency */
-  border-radius: 15px; /* rounded corners */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* shadow */
-  margin-bottom: 20px; /* adds space between the posts */
+  background-color: var(--card-bg); /* light background w transparency */
+  border: 2px solid var(--border-color); /* soft pink border around the box */
+  padding: var(--spacing-lg);
+  border-radius: var(--spacing-md);
+  box-shadow: var(--box-shadow); /* shadow */
 }
 
 .list{
   list-style: none; /* removes the bullet points */
   padding-left: 0;
-}
-
-.blog-container h1{
-  text-align: center;
 }
 
 .list li{
@@ -336,10 +312,55 @@ body, a{
   background-repeat: no-repeat;
 }
 
-/*blog-container text styling*/
-.blog-container a{
-  text-decoration: none;
-  color: #111;
+/*
+========================================
+PAGE CONTAINERS
+========================================
+*/
+
+/* about */
+.about-container{
+  max-width: 800px; /* keeps from getting too wide */
+  margin: 50px auto; /* centers the box */
+  text-align: left; /* left aligns the text */
+
+  background-color: rgba(255, 255, 255, 0.9); /* light background w transparency */
+  padding: var(--spacing-lg); /* padding inside the box */
+  border-radius: var(--border-radius-md); /* rounded corners */
+  box-shadow: var(--box-shadow); /* shadow */
+}
+
+.about-container h1{
+  text-align: center;
+}
+
+.about-container p{
+  text-indent: 30px;
+  text-align: justify;
+}
+
+/*
+========================================
+BLOG PAGE
+========================================
+*/
+
+/* blog container formatting */
+.blog-container{
+  /* making the actual box nice and pretty */
+  max-width: 800px; /* keeps from getting too wide */
+  margin: 50px auto; /* centers the box */
+  text-align: left; /* left aligns the text */
+
+  /* container styling */
+  background-color: rgba(255, 255, 255, 0.9); /* light background w transparency */
+  padding: var(--spacing-lg); /* padding inside the box */
+  border-radius: var(--border-radius-md); /* rounded corners */
+  box-shadow: var(--box-shadow); /* shadow */
+}
+
+.blog-container h1{
+  text-align: center;
 }
 
 .blog-container a:hover{
@@ -347,97 +368,159 @@ body, a{
   transition: all 0.3s ease-in-out;
 }
 
-.about-container p{
-  text-indent: 30px; /* indents the first line of the paragraph */
-  text-align: justify; /* aligns the text to fill the box */
+/* individual blog posts */
+.blog-post{
+  /* adding from blog-container */
+  max-width: 800px; /* keeps from getting too wide */
+  margin: 50px auto; /* centers the box */
+  text-align: left; /* left aligns the text */
+
+  padding: var(--spacing-lg);
+  background-color: rgba(255, 255, 255, 0.95); /* light background w transparency */
+  border-radius: var(--border-radius-md); /* rounded corners */
+  box-shadow: var(--box-shadow-sm); /* shadow */
+  margin-bottom: var(--spacing-lg); /* adds space between the posts */
+}
+
+/* blog page tags */
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-lg) 0;
+  justify-content: center;
+}
+
+.tag-button {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xs) var(--spacing-md);
+  cursor: url('assets/heart-cursor.png'), pointer;
+  transition: var(--transition-default);
+}
+
+.tag-button:hover {
+  background-color: var(--primary-accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.tag-button.active {
+  background-color: var(--primary-accent);
+  color: white;
+}
+
+.post-item {
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-default);
+  cursor: url('assets/heart-cursor.png'), pointer;
+  border: 2px solid transparent;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.post-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.post-title {
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+}
+
+.post-tags {
+  margin-top: var(--spacing-xs);
+  font-size: 0.9em;
+  color: #666;
 }
 
 /*
-======================================================= MOBILE =========================================================
+========================================
+RESPONSIVE STYLES
+========================================
 */
 
+/* tablet */
+@media (max-width: 900px){
+  .index .content-wrapper {
+    gap: var(--spacing-lg);
+  }
+
+  .bio, .updates{
+    width: 100%;
+  }
+
+}
+
+/* mobile */
 @media (max-width: 600px){
   .page-container{
     flex-direction: column; /* stacks the bio and main content */
     align-items: center; /* centers the items */
-    padding: 10px;
+    padding: var(--spacing-sm);
   }
 
-  /*                                                   SITE TITLE                                                      */
+  /* site title */
   .site-title{
     font-size: 2.5em; /* makes the title smaller */
-    padding: 5px 10px; /* padding inside the box */
+    padding: var(--spacing-xs) var(--spacing-sm); /* padding inside the box */
   }
-  
+
+  /* content wrapper */  
   .index .content-wrapper{
     flex-direction: column; /* stacks the bio and main content */
     align-items: center; /* centers the items */
-    padding: 10px;
-    justify-content: space-between; /* ensures equal spacing */
+    padding: var(--spacing-sm);
   }
 
   .left-column{
     padding-top: 100px; /* for the icon */
   }
 
+  /* column sizing */
   .middle-column{
     width: 80%; /* makes the bio box take up 80% of the screen */
     max-width: 400px; /* keeps from getting too wide */
-    margin-bottom: 15px; /* adds space between the boxes */
+    margin-bottom: var(--spacing-md); /* adds space between the boxes */
   }
 
   .left-column, .right-column{
     width: 90%; /* makes the bio box take up 100% of the screen */
     max-width: 400px; /* keeps from getting too wide */
     align-items: center;
-    margin-right: 5px;
+    margin-right: var(--spacing-xs);
   }
 
-  .bio{
+  .bio, .updates{
     align-items: center;
     width: 90%; /* makes the bio box take up 80% of the screen */
     max-width: 400px; /* keeps from getting too wide */
   }
 
-  .updates{
-    align-items: center;
-    width: 90%;
-    max-width: 400px; /* keeps from getting too wide */
-  }
-
+  /* header */
   .header{
     justify-content: space-between;
   }
   
-  /*                                                   NAV BAR                                                         */
-
+  /* nav bar */
   .nav-bar{
     /* size on screen */
     width:80%;
     max-width: 400px;
-    
-    /*
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    padding: 10px;
-    */
-
     font-size: 0.9em;
-    
-    
   }
 
   .nav-bar a{
     text-align: center; 
     font-size: 1.2em;
-
-    /*
-    padding: 10px;
-    width: 100%;
-    white-space: nowrap;
-    */
   }
   
   .nav-bar ul{
@@ -445,9 +528,8 @@ body, a{
     align-items:center;
   }
 
-    /*                                                   ABOUT PAGE                                                    */
-
-  .about-container{
+  /* page containers */
+  .about-container, .blog-container, .blog-post{
     width: 80%;
     max-width: 400px;
   }
@@ -456,17 +538,4 @@ body, a{
     text-align: left; /* aligns the text to fill the box */
   }
 
-    /*                                                 BLOG PAGE                                                       */
-
-  .blog-container{
-    width: 80%;
-    max-width: 400px;
-  }
-
-    /*                                                 BLOG POSTS                                                      */
-
-  .blog-post{
-    width: 80%;
-    max-width: 400px;
-  }
 }
